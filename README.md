@@ -3,7 +3,7 @@ Proof of concept for ordering online through the weathertech cafe for CU student
 
 WRTG 3035 Technical writing Group project
 
-1. Akash Gaonkar
-2. Daniel Maxson
-3. Frederik Lohner
+* Akash Gaonkar
+* Daniel Maxson
+* Frederik Lohner
 

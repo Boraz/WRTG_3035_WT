@@ -1,0 +1,6 @@
+framework module Pods_ConsumerSideApp {
+  umbrella header "Pods-ConsumerSideApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

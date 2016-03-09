@@ -24,7 +24,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate {
     private let iconImage = UIImageView()
     private let scrollView = UIScrollView()
     private let containerView = UIView()
-    
+    private let delayTime = 3.0
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -32,9 +32,20 @@ class LoginScreen: UIViewController, UITextFieldDelegate {
     
     func loginButtonClicked() {
         dismissKeyboard()
-        if usernameEntry.text != "" && passwordEntry.text != "" {
+        if usernameEntry.text != "" && passwordEntry.text != "" && usernameEntry.text == "frlo2024" {
             let progress = GradientCircularProgress()
             progress.show(message: "Authenticating...", style: LoadingStyle())
+            delay(delayTime, closure: { () -> () in
+                progress.dismiss()
+                self.navigationController!.pushViewController(self.storyboard!.instantiateViewControllerWithIdentifier("MenuScreen") as! MenuScreen, animated: true)
+            })
+        } else if usernameEntry.text != "" && passwordEntry.text != "" && usernameEntry.text != "frlo2024" {
+            let progress = GradientCircularProgress()
+            progress.show(message: "Authenticating...", style: LoadingStyle())
+            delay(delayTime, closure: { () -> () in
+                progress.updateMessage(message: "Error authenticating.")
+                progress.dismiss()
+            })
         } else {
             SCLAlertView().showError("Error", subTitle: "Please fill in all fields before attempting to login.")
         }

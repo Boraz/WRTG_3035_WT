@@ -29,6 +29,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sQC-9i-ljf" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O0t-0y-Som">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

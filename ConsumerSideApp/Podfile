@@ -3,4 +3,6 @@ use_frameworks!
 
 target 'ConsumerSideApp' do
     pod 'SnapKit', '~> 0.15.0'
+    pod 'SCLAlertView'
+    pod 'GradientCircularProgress', :git => 'https://github.com/keygx/GradientCircularProgress'
 end

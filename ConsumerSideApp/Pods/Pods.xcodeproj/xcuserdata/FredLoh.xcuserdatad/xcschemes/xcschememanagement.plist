@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>GradientCircularProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ConsumerSideApp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SCLAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0CE77B94BB16B295D048BB48BFD03336</key>
+		<key>1D647234FD8CF38B55FD88E563549489</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1DCB708AF6CD89720464718484F4AE5</key>
+		<key>3A8610C88F4C8CAA41643562438BEBFE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>648F138AC83A539FC9C958FAF5D6CFF9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8EFED2C5DA128E4B752B5D7088EF6551</key>
 		<dict>
 			<key>primary</key>
 			<true/>

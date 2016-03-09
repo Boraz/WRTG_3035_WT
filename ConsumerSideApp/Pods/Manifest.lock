@@ -1,10 +1,25 @@
 PODS:
+  - GradientCircularProgress (3.1.0)
+  - SCLAlertView (0.5.1)
   - SnapKit (0.15.0)
 
 DEPENDENCIES:
+  - GradientCircularProgress (from `https://github.com/keygx/GradientCircularProgress`)
+  - SCLAlertView
   - SnapKit (~> 0.15.0)
 
+EXTERNAL SOURCES:
+  GradientCircularProgress:
+    :git: https://github.com/keygx/GradientCircularProgress
+
+CHECKOUT OPTIONS:
+  GradientCircularProgress:
+    :commit: 975d13a884bcd9395318cfb1647d7bdde4ba3257
+    :git: https://github.com/keygx/GradientCircularProgress
+
 SPEC CHECKSUMS:
+  GradientCircularProgress: 7997493ecbe6f6b84694c66aefe43ff7b9de4b6a
+  SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
 
 COCOAPODS: 0.39.0

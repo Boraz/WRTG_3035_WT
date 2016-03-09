@@ -8,6 +8,9 @@
 
 import UIKit
 import SnapKit
+import SCLAlertView
+import GradientCircularProgress
+
 
 class LoginScreen: UIViewController, UITextFieldDelegate {
     private var usernameEntry = UITextField()
@@ -27,9 +30,20 @@ class LoginScreen: UIViewController, UITextFieldDelegate {
         return UIStatusBarStyle.LightContent
     }
     
+    func loginButtonClicked() {
+        dismissKeyboard()
+        if usernameEntry.text != "" && passwordEntry.text != "" {
+            let progress = GradientCircularProgress()
+            progress.show(message: "Authenticating...", style: LoadingStyle())
+        } else {
+            SCLAlertView().showError("Error", subTitle: "Please fill in all fields before attempting to login.")
+        }
+    }
+    
     override func viewDidLoad() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tap)
+        loginButton.addTarget(self, action: "loginButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
         gradientLayer.frame = self.view.bounds
         
         let color1 = UIColor(red:0.19, green:0.25, blue:0.35, alpha:1.0).CGColor as CGColorRef

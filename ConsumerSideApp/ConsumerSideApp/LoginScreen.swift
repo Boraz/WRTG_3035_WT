@@ -24,7 +24,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate {
     private let iconImage = UIImageView()
     private let scrollView = UIScrollView()
     private let containerView = UIView()
-    private let delayTime = 3.0
+    private let delayTime = 1.0
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -52,6 +52,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
+        usernameEntry.text = "frlo2024"
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tap)
         loginButton.addTarget(self, action: "loginButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
@@ -95,12 +96,12 @@ class LoginScreen: UIViewController, UITextFieldDelegate {
 //        iconImage.hidden = true
         
         usernameEntry.attributedPlaceholder  = NSAttributedString(string:"CU Identikey",
-            attributes:[NSForegroundColorAttributeName: UIColor(red:0.69, green:0.73, blue:0.75, alpha:1.0)])
+            attributes:[NSForegroundColorAttributeName: UIColor(red:0.69, green:0.73, blue:0.75, alpha:0.7)])
         usernameEntry.textColor = UIColor(red:0.69, green:0.73, blue:0.75, alpha:1.0)
         
         passwordEntry.secureTextEntry = true
         passwordEntry.attributedPlaceholder  = NSAttributedString(string:"********",
-            attributes:[NSForegroundColorAttributeName: UIColor(red:0.69, green:0.73, blue:0.75, alpha:1.0)])
+            attributes:[NSForegroundColorAttributeName: UIColor(red:0.69, green:0.73, blue:0.75, alpha:0.7)])
         passwordEntry.textColor = UIColor(red:0.69, green:0.73, blue:0.75, alpha:1.0)
         
         loginLabelTopBar.backgroundColor = UIColor(red:0.69, green:0.73, blue:0.75, alpha:1.0)

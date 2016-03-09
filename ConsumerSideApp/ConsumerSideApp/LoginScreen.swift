@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class LoginScreen: UIViewController {
+class LoginScreen: UIViewController, UITextFieldDelegate {
     private var usernameEntry = UITextField()
     private var passwordEntry = UITextField()
     private var loginButton = UIButton()
@@ -28,6 +28,8 @@ class LoginScreen: UIViewController {
     }
     
     override func viewDidLoad() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(tap)
         gradientLayer.frame = self.view.bounds
         
         let color1 = UIColor(red:0.19, green:0.25, blue:0.35, alpha:1.0).CGColor as CGColorRef
@@ -53,6 +55,9 @@ class LoginScreen: UIViewController {
         containerView.addSubview(passwordEntry)
         containerView.addSubview(loginButton)
         containerView.addSubview(iconImage)
+        
+        usernameEntry.delegate = self
+        passwordEntry.delegate = self
         
         
         iconImage.image = UIImage(named: "Icon")
@@ -123,6 +128,40 @@ class LoginScreen: UIViewController {
             make.left.right.equalTo(loginLabelBottomBar)
         }
         self.navigationController?.navigationBar.hidden = true
+    }
+    
+    func keyboardWillShow(notification:NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                keyboardHeight = keyboardSize.height
+            } else {
+                keyboardHeight = 220
+            }
+        } else {
+            keyboardHeight = 200
+        }
+    }
+    
+    var keyboardHeight: CGFloat = 220
+    func textFieldDidBeginEditing(textField: UITextField) {
+        animateViewMoving(true, moveValue: keyboardHeight)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        animateViewMoving(false, moveValue: keyboardHeight)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
     }
 
 }

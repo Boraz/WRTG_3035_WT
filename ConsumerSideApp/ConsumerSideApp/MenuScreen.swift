@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import GradientCircularProgress
 
 class MenuScreen: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private let gradientLayer = CAGradientLayer()
@@ -26,23 +27,33 @@ class MenuScreen: UIViewController, UITableViewDataSource, UITableViewDelegate {
         gradientLayer.colors = [color1, color2]
         gradientLayer.locations = [0.0, 1.0]
         self.view.layer.addSublayer(gradientLayer)
-        self.menuTableView.layer.addSublayer(gradientLayer)
         menuTableView.backgroundColor = UIColor(red:0.19, green:0.25, blue:0.35, alpha:1.0)
         self.view.addSubview(menuTableView)
         menuTableView.snp_makeConstraints { (make) -> Void in
             make.left.bottom.right.equalTo(self.view)
-            make.top.equalTo(self.view)
+            make.top.equalTo(self.view).offset(40)
         }
+        menuTableView.separatorStyle = .None
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let progress = GradientCircularProgress()
+        progress.show(message: "Ordering...", style: LoadingStyle())
+        delay(1.0, closure: { () -> () in
+            progress.dismiss({ () -> Void in
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            })
+        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {        return generateMenuCell(menuTableView, indexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 150
     }
 }

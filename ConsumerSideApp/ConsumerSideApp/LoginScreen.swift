@@ -52,8 +52,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
-        usernameEntry.text = "frlo2024"
-        passwordEntry.text = "1"
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tap)
         loginButton.addTarget(self, action: "loginButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)

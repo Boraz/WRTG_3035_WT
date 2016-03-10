@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SCLAlertView
 import GradientCircularProgress
 
 class MenuScreen: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -41,6 +42,8 @@ class MenuScreen: UIViewController, UITableViewDataSource, UITableViewDelegate {
         progress.show(message: "Ordering...", style: LoadingStyle())
         delay(1.0, closure: { () -> () in
             progress.dismiss({ () -> Void in
+                let string = randomStringWithLength(5)
+                SCLAlertView().showSuccess("Success", subTitle: "Confirmation code: " + (string as String))
                 self.navigationController?.popToRootViewControllerAnimated(true)
             })
         })

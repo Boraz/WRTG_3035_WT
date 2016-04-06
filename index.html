@@ -2,82 +2,142 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
 
 <body>
+  <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
   <link rel="stylesheet" type="text/css" href="resume_DM.css">
- 
+
   <div class="navbar">
     <nav>
-      <div class="nav-wrapper blue-grey" id="SPpark-nav">
+      <div class="nav-wrapper red accent-4" id="SPpark-nav">
         <!-- the href refreshes the page, but its all daynamic so its only for the user -->
-        <a href="index.html" class="brand-logo center">R&#233;sum&#233;</a>
+        <a href="index.html" class="brand-logo center">Weathertech</a>
           <ul class="right hide-on-small-and-down">
-            <li class="active"><a href="subscribe.html">Subscribe</a></li>
-            <li><a href="cities.html">Cities</a></li>
+            <li><a href="orders.html">See your order</a></li>
           </ul>
       </div>
     </nav>
   </div>
 
-  <div class="container">
+  <div class="container grey lighten-2">
     <div class="row">
-	  <div class="col s6"><h1> Order Online! </h1></div>
+	  <div class="col push-s2 s8"><h1> Weathertech  Order  Online! </h1></div>
 	</div>
 
-	<div class="row">
-	  <div class="input-field col s12 grey lighten-2">
-	    <input id="email" type="email" class="validate">
-		<label for="email" data-error="Not_valid">Order</label>
-	  </div>
-	</div>
-	
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <select class="icons">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="" data-icon="images/salad.png" class="circle">Salad</option>
+            <option value="" data-icon="images/smoothie.png" class="circle">Smoothie</option>
+            <option value="" data-icon="images/ice_cream.png" class="circle">Ice Cream</option>
+            <option value="" data-icon="images/calzone.png" class="circle">Calzone</option>
+            <option value="" data-icon="images/pizza.png" class="circle">Pizza</option>
+          </select>
+          <label>Images in select</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <select multiple>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Materialize Multiple Select</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
 	<div class="row">
 	  <div class="input-field col s12">
-	    <a class="waves-effect waves-light btn right blue-grey" id="submit">
-		<i class="material-icons right">email</i>Submit</a>
+	    <input id="email" type="email" class="validate">
+		<label for="email" data-error="Not_valid">Email</label>
 	  </div>
 	</div>
 	
-	<div class="row">
-	  <h3>Current Orders</h3>
-	  <ul class="collection" id="emails">
-	</div>
+  <div class="row">
+    <div class="input-field col s12">
+      <a class="waves-effect waves-light btn right red accent-4" id="submit">
+    <i class="material-icons right">shopping_cart</i>Submit</a>
+    </div>
   </div>
+
 
 <script>
 
-    var root = new Firebase('https://ucdd-4830-004.firebaseio.com/')
+    var root = new Firebase('https://wt-online.firebaseio.com/')
     var taskListRef = root.child('email')
       $('#submit').click(function() {
-    	console.log('the submit button is clicked')
-    	var email = $('#email').val()
-    	var taskObject = {
-    		email: email
-    	}
+      console.log('the submit button is clicked')
+      var email = $('#email').val()
+      var taskObject = {
+        email: email
+      }
 
-    	if (email == "") {
-    		alert("Invalid entry detected.");
-    		console.log("INVALID ENTRY")
-    		return
-    	}
-    	else {
-    		var newTaskRef = taskListRef.push()
-    		newTaskRef.set(taskObject)
-    	}
-    	Materialize.toast('Your Order has been recieved.', 2000)
+      if (email == "") {
+        alert("Invalid entry detected.");
+        console.log("INVALID ENTRY")
+        return
+      }
+      else {
+        var newTaskRef = taskListRef.push()
+        newTaskRef.set(taskObject)
+      }
+
+      var first_n = $('#first_name').val()
+      var taskObject = {
+        email: first_name
+      }
+
+      if (first_name == "") {
+        alert("Invalid entry detected.");
+        console.log("INVALID ENTRY")
+        return
+      }
+      else {
+        var newTaskRef = taskListRef.push()
+        newTaskRef.set(taskObject)
+      }
+
+      Materialize.toast('Your Order has been recieved!', 4000, 'rounded')
         })
 
-    var ref = new Firebase('https://ucdd-4830-004.firebaseio.com/')
+    var ref = new Firebase('https://wt-online.firebaseio.com/')
       ref.child('email').orderByValue().on('value', function(snapshot) {
         var emails = snapshot
         document.getElementById("emails").innerHTML = "";
@@ -88,6 +148,7 @@
     })
 
 </script>
+
 	
 </body>
 </html>

@@ -1,8 +1,12 @@
 
+
+$('select').material_select();
+
+
 var root = new Firebase('https://wt-online.firebaseio.com/');
 
 var taskListRef = root.child('email');
-  
+
 $('#submit').click(function() {
   console.log('the submit button is clicked');
   var email = $('#email').val();

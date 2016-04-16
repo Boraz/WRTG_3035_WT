@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
-<body>
+<body class='grey darken-4'>
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
@@ -41,25 +41,26 @@
     </nav>
   </div>
 	<div class="container">
-	<div class="row">
-	  <h3>Current Orders</h3>
-	  <ul class="collection" id="emails">
-	</div>
+    <div class="card-panel">
+    	<div class="row">
+    	  <h3>Current Orders</h3>
+    	  <ul class="collection" id="emails"></ul>
+    	</div>
+    </div>
   </div>
-</div>
 
 <script>
 
-    var root = new Firebase('https://ucdd-4830-004.firebaseio.com/')
-    var ref = new Firebase('https://wt-online.firebaseio.com/')
-      ref.child('email').orderByValue().on('value', function(snapshot) {
-        var emails = snapshot
-        document.getElementById("emails").innerHTML = "";
-        snapshot.forEach(function(snapshot) {
-          emails = snapshot.val()
-        $('#emails').append('<li>' + emails.email + '<br>' + '</li>')
-        })
-    })
+    var root = new Firebase('https://ucdd-4830-004.firebaseio.com/');
+    var ref = new Firebase('https://wt-online.firebaseio.com/');
+    ref.child('email').orderByValue().on('value', function(snapshot) {
+      var emails = snapshot;
+      document.getElementById("emails").innerHTML = "";
+      snapshot.forEach(function(snapshot) {
+        emails = snapshot.val();
+        $('#emails').append('<li class="collection-item">' + emails.email + '<br>' + '</li>');
+      });
+    });
 
 </script>
 	

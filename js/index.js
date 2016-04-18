@@ -1,58 +1,92 @@
 
-
-$('select').material_select();
-
-var $submit = $('#submit');
-var $email = $('#email');
-var $name = $('#nickname');
-var $food = $('#food');
+var $email,
+    $name,
+    $food,
+    $foodType, 
+    $foodExtras,
+    $submit
+;
 
 var fbroot = new Firebase('https://wt-online.firebaseio.com/');
 
+var orders = fbroot.child('orders');
 var foods = fbroot.child('foods');
 var food_data;
 
-foods.once('value', function(snapshot){
-  food_data = snapshot.val();
-  for (var i = 0; i != food_data.length; ++i) {
-    f = food_data[i];
-    $food.append('<option data-icon="images/'+f.image+'">'+f.name+'</option>');
-  }
-  $food.material_select();
+$(function(){
+
+  $submit = $('#submit');
+  $email = $('#email');
+  $name = $('#name');
+  $food = $('#food');
+  $foodType = $("#food-type");
+  $foodExtras = $("#food-extras");
+
+  $('select').material_select();
+
+  loadFoods();
+
+  $food.change(function(evt) {
+    var val = $food.val();
+    loadOptions(food_data[val]);
+  });
+
+  $submit.click(function(){
+    var name = $name.val();
+    var email = $email.val();
+    var food = food_data[$food.val()];
+    var kind = food ? food.kinds[$foodType.val()] : undefined;
+
+    if (name && email && food && kind) {
+      var extras = $foodExtras.val().slice(1);
+
+      orders.push({
+        "name": name,
+        "email": email,
+        "food": food.name,
+        "kind": kind,
+        "extras": extras
+      });
+      reset();
+      Materialize.toast("Order submitted.");
+    } else {
+      Materialize.toast("Invalid order.");
+    }
+
+  });
+
 });
 
-// var taskListRef = root.child('email');
+function loadFoods() {
+  $food.empty();
+  $food.append('<option value="" disabled selected>Choose a food</option>');
+  foods.once('value', function(snapshot){
+    food_data = snapshot.val();
+    for (var i = 0; i != food_data.length; ++i) {
+      f = food_data[i];
+      $food.append('<option value="'+i+'" data-icon="images/'+f.image+'">'+f.name+'</option>');
+    }
+    $food.material_select();
+  });
+}
 
-// $submit.click(function() {
-//   console.log('the submit button is clicked');
-//   var email = $email.val();
+function loadOptions(food) {
+  $foodType.empty();
+  $foodType.append('<option value="" disabled selected>Choose Type</option>');
+  for (var i = 0; food && food.kinds && i != food.kinds.length; ++i) {
+    $foodType.append('<option value="'+i+'">'+food.kinds[i]+'</option>');
+  }
 
-//   var taskObject = {
-//     email: email
-//   }
+  $foodExtras.empty();
+  $foodExtras.append('<option value="" disabled selected>Choose Extras</option>');
+  for (var i = 0; food && food.extras && i != food.extras.length; ++i) {
+    $foodExtras.append('<option value="'+food.extras[i]+'">'+food.extras[i]+'</option>');
+  }
 
-//   if (email == '') {
-//     alert('Invalid entry detected.');
-//     console.log('INVALID ENTRY');
-//     return;
-//   } else {
-//     var newTaskRef = taskListRef.push();
-//     newTaskRef.set(taskObject);
-//   }
+  $foodType.material_select();
+  $foodExtras.material_select();
+}
 
-//   var name = $name.val();
-//   var taskObject = {
-//     email: name
-//   }
-
-//   if (name == '') {
-//     alert('Invalid entry detected.');
-//     console.log('INVALID ENTRY');
-//     return
-//   } else {
-//     var newTaskRef = taskListRef.push();
-//     newTaskRef.set(taskObject);
-//   }
-
-//   Materialize.toast('Your Order has been recieved!', 4000, 'rounded');
-// });
+function reset() {
+  loadFoods();
+}

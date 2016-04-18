@@ -49,10 +49,11 @@
 
       <div class="row">
         <form class="col s12">
+
           <div class="row">
             <div class="input-field col s12 m6 offset-m3">
               <input id="name" type="text" class="validate">
-              <label for="nickname">Name</label>
+              <label for="name">Name</label>
             </div>
           </div>
           <div class="row">
@@ -61,36 +62,34 @@
               <input id="email" type="email" class="validate">
             <label for="email" data-error="Not_valid">Email</label>
             </div>
-            
+          </div>
+
+          <div class="row">
             <div class="input-field col s12 m8 offset-m2">
-              <select id="food" class="icons">
-                <option value="" disabled selected>Choose a food</option>
-              </select>
+              <select id="food" class="icons"></select>
               <label>Food</label>
             </div>
             
             <div class="input-field col s12 m8 offset-m2">
-              <select id="subtype">
-                
-              </select>
+              <select id="food-type"></select>
+              <label>What kind?</label>
             </div>
-            
-            <div class="input-field col s12 m8 offset-m2" id="drink">
-              <select multiple>
-                <option value="" disabled selected>Choose a drink</option>
-                <option value="1">Nectar of the gods</option>
-                <option value="2">Fountain of youth</option>
-                <option value="3">Elixir of life</option>
+
+            <div class="input-field col s12 m8 offset-m2">
+              <select id="food-extras" multiple>
               </select>
-              <label>Materialize Multiple Select</label>
+              <label>Any Extras?</label>
+            </div>
+
           </div>
         </form>
       </div>
     	
       <div class="row">
         <div class="input-field col s10">
-          <a class="waves-effect waves-light btn right red accent-4" id="submit">
-          <i class="material-icons right">shopping_cart</i>Submit</a>
+          <a id="submit" class="waves-effect waves-light btn right red accent-4" href="#">
+            <i class="material-icons right">shopping_cart</i>Submit
+          </a>
         </div>
       </div>
     </div>
@@ -99,42 +98,5 @@
   <script src='js/index.js'></script>
 	
 </body>
-
-<script>
-  var root = new Firebase('https://wt-online.firebaseio.com/')
-  var taskListRef = root.child('email')
-  $('#submit').click(function() {
-          console.log('the submit button is clicked')
-          var name = $('#name').val()
-          console.log('the name is', name)
-
-          var food = $('#food').val()
-          console.log('the food is', food)
-
-          var drink = $('#drink').val()
-          console.log('the drink is', drink)
-
-          var taskObject = {
-              name: name,
-              food: food,
-              drink: drink,
-              completed: false
-          }
-
-          if (name == "" || food == null || drink == "") {
-              alert("Invalid entry detected.");
-              console.log("INVALID ENTRY")
-              return
-          } else {
-              var newTaskRef = taskListRef.push()
-              newTaskRef.set(taskObject)
-              alert("Information Submitted.");
-          }
-      })
-      // IMPORTANT!! initialize materializecss select
-  $(document).ready(function() {
-     $('select').material_select();
-  });
-</script>
 
 </html>

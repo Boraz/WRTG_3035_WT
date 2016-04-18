@@ -51,7 +51,7 @@
 
 <script>
 
-    var root = new Firebase('https://ucdd-4830-004.firebaseio.com/');
+    var root = new Firebase('https://wt-online.firebaseio.com/');
     var ref = new Firebase('https://wt-online.firebaseio.com/');
     ref.child('email').orderByValue().on('value', function(snapshot) {
       var emails = snapshot;

@@ -10,12 +10,14 @@ var $food = $('#food');
 var fbroot = new Firebase('https://wt-online.firebaseio.com/');
 
 var foods = fbroot.child('foods');
+var food_data;
 
 foods.once('value', function(snapshot){
-  snapshot.forEach(function(f){
-    f = f.val();
+  food_data = snapshot.val();
+  for (var i = 0; i != food_data.length; ++i) {
+    f = food_data[i];
     $food.append('<option data-icon="images/'+f.image+'">'+f.name+'</option>');
-  });
+  }
   $food.material_select();
 });
 

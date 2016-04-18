@@ -37,50 +37,58 @@
   <div class="container">
     <div class="card-panel grey lighten-5">
       <div class="row">
-        <div class="col push-s2 s8">
+        <div class="col s12 center-align">
           <h4> Weathertech Online Ordering </h4>
+          <!-- Good section for status of the WeatherTech. Like closed or no calzones w/e -->
           <h1> 
             WOO!
           </h1>
+
         </div>
       </div>
 
       <div class="row">
         <form class="col s12">
           <div class="row">
-            <div class="input-field col s12 m8 offset-m2">
-              <input id="nickname" type="text" class="validate">
+            <div class="input-field col s12 m6 offset-m3">
+              <input id="name" type="text" class="validate">
               <label for="nickname">Name</label>
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s12 m8 offset-m2">
+            
+            <div class="input-field col s12 m6 offset-m3">
               <input id="email" type="email" class="validate">
             <label for="email" data-error="Not_valid">Email</label>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12 m6">
+            
+            <div class="input-field col s12 m8 offset-m2">
               <select id="food" class="icons">
-                <option value="" disabled selected>Choose your option</option>
+                <option value="" disabled selected>Choose a food</option>
               </select>
-              <label>Images in select</label>
+              <label>Food</label>
             </div>
-            <div class="input-field col s12 m6">
+            
+            <div class="input-field col s12 m8 offset-m2">
+              <select id="subtype">
+                
+              </select>
+            </div>
+            
+            <div class="input-field col s12 m8 offset-m2" id="drink">
               <select multiple>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+                <option value="" disabled selected>Choose a drink</option>
+                <option value="1">Nectar of the gods</option>
+                <option value="2">Fountain of youth</option>
+                <option value="3">Elixir of life</option>
               </select>
               <label>Materialize Multiple Select</label>
-            </div>
           </div>
         </form>
       </div>
     	
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s10">
           <a class="waves-effect waves-light btn right red accent-4" id="submit">
           <i class="material-icons right">shopping_cart</i>Submit</a>
         </div>
@@ -91,4 +99,42 @@
   <script src='js/index.js'></script>
 	
 </body>
+
+<script>
+  var root = new Firebase('https://wt-online.firebaseio.com/')
+  var taskListRef = root.child('email')
+  $('#submit').click(function() {
+          console.log('the submit button is clicked')
+          var name = $('#name').val()
+          console.log('the name is', name)
+
+          var food = $('#food').val()
+          console.log('the food is', food)
+
+          var drink = $('#drink').val()
+          console.log('the drink is', drink)
+
+          var taskObject = {
+              name: name,
+              food: food,
+              drink: drink,
+              completed: false
+          }
+
+          if (name == "" || food == null || drink == "") {
+              alert("Invalid entry detected.");
+              console.log("INVALID ENTRY")
+              return
+          } else {
+              var newTaskRef = taskListRef.push()
+              newTaskRef.set(taskObject)
+              alert("Information Submitted.");
+          }
+      })
+      // IMPORTANT!! initialize materializecss select
+  $(document).ready(function() {
+     $('select').material_select();
+  });
+</script>
+
 </html>

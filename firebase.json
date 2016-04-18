@@ -1,0 +1,9 @@
+{
+  "firebase": "wt-online",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

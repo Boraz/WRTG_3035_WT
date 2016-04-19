@@ -2,12 +2,13 @@
 var $orders;
 
 var fbroot = new Firebase('https://wt-online.firebaseio.com/');
+var orders;
 
 $(function(){
 
   $orders = $('#orders');
 
-  var orders = fbroot.child('orders');
+  orders = fbroot.child('orders');
 
   orders.on('value', function(snapshot) { /* orders.on for real time changes to the orders page */
     $orders.empty();
@@ -19,28 +20,35 @@ $(function(){
 });
 
 function addOrder(order) {
-  order = order.val();
-  $orders.append(
-    '<li class="collection-item">' + 
-      '<h5>' + order.name + '</h5>' +
-      '<span>' + 
-        order.kind + ' ' + order.food +
-        (order.extras ? ' + ' + order.extras.join(', ') : '') +
-      '</span>' +
+  order_data = order.val();
+  
+  var $newItem = $(
+    '<li class="collection-item row valign-wrapper">' + 
+      '<div class="col s11">' +
+        '<h5>' + order_data.name + '</h5>' +
+        '<span>' + 
+          order_data.kind + ' ' + order_data.food +
+          (order_data.extras ? ' + ' + order_data.extras.join(', ') : '') +
+        '</span>' +
+      '</div>' +
     '</li>'
   );
+
+  var $remove = $(
+    '<a class="btn-flat waves-effect col s1 valign center-align"><i class="material-icons">done</i></a>'
+  );
+  $remove.attr('key', order.key());
+
+  $newItem.prepend($remove);
+  $orders.append($newItem);
+
+  $remove.click(removeOrder);
+
 }
-/*
+
 function removeOrder(order) {
-  complete.click(function(){
-  if (least(time) {
-    orders.remove({
-    });
-    reset();
-    Materialize.toast("Order Completed.", 10000); /* changed to 10 seconds
-  } else {
-    Materialize.toast("No orders to complete.");
-  }
-});
+  var toDelete = $(this).attr('key');
+  setTimeout(function(){
+      orders.child(toDelete).set(null);
+  }, 100);
 }
-*/

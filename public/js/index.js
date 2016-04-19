@@ -26,33 +26,31 @@ $(function(){
 
   loadFoods();
 
-  $food.change(function(evt) {
-    var val = $food.val();
-    loadOptions(food_data[val]);
-  });
-
-  $submit.click(function(){
-    var name = $name.val();
-    var email = $email.val();
-    var food = food_data[$food.val()];
-    var kind = food ? food.kinds[$foodType.val()] : undefined;
-    var extras = $foodExtras.val();
-
-    if (name && email && food && kind) {
-      orders.push({
-        "name": name,
-        "email": email,
-        "food": food.name,
-        "kind": kind,
-        "extras": extras
-      });
-      reset();
-      Materialize.toast("Order submitted.", 10000); /* changed to 10 seconds*/
-    } else {
-      Materialize.toast("Invalid order.");
-    }
-
-  });
+$food.change(function(evt) {
+  var val = $food.val();
+  loadOptions(food_data[val]);
+});
+$submit.click(function(){
+  var name = $name.val();
+  var email = $email.val();
+  var food = food_data[$food.val()];
+  var kind = food ? food.kinds[$foodType.val()] : undefined;
+  var extras = $foodExtras.val();
+  if (name && email && food && kind) {
+    orders.push({
+      "name": name,
+      "email": email,
+      "food": food.name,
+      "kind": kind,
+      "extras": extras,
+      "time": Date.now()  /* Either Date() for "Mon Apr 18 2016 22:37:56 GMT-0600 (Mountain Daylight Time)" or Date.now() for 1461040778239. Added so we can remove based on oldest order.*/
+    });
+    reset();
+    Materialize.toast("Order submitted.", 10000); /* changed to 10 seconds*/
+  } else {
+    Materialize.toast("Invalid order.");
+  }
+});
 
 });
 

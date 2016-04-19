@@ -30,3 +30,17 @@ function addOrder(order) {
     '</li>'
   );
 }
+/*
+function removeOrder(order) {
+  complete.click(function(){
+  if (least(time) {
+    orders.remove({
+    });
+    reset();
+    Materialize.toast("Order Completed.", 10000); /* changed to 10 seconds
+  } else {
+    Materialize.toast("No orders to complete.");
+  }
+});
+}
+*/

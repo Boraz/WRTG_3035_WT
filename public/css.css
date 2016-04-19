@@ -1,0 +1,15 @@
+/*-----------------------------------------------------------------------------
+Weathertech Online Ordering Stylesheet
+
+version:   1.0
+date:      04/18/2016
+author:    Daniel Maxson
+
+/* Materialize colors */
+
+.input-field input[type=text],
+.input-field input[type=email] {
+  border: none;
+  border-bottom: 1px solid grey;
+  box-shadow: 0 1px 0 0 black;
+}

@@ -9,7 +9,7 @@ $(function(){
 
   var orders = fbroot.child('orders');
 
-  orders.once('value', function(snapshot) {
+  orders.on('value', function(snapshot) { /* orders.on for real time changes to the orders page */
     $orders.empty();
     snapshot.forEach(addOrder);
   });

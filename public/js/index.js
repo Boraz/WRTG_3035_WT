@@ -47,7 +47,7 @@ $(function(){
         "extras": extras
       });
       reset();
-      Materialize.toast("Order submitted.");
+      Materialize.toast("Order submitted.", 10000); /* changed to 10 seconds*/
     } else {
       Materialize.toast("Invalid order.");
     }

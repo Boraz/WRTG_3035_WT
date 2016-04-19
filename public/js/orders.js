@@ -30,12 +30,3 @@ function addOrder(order) {
     '</li>'
   );
 }
-
-// ref.child('email').orderByValue().on('value', function(snapshot) {
-//   var emails = snapshot;
-//   document.getElementById('emails').innerHTML = '';
-//   snapshot.forEach(function(snapshot) {
-//     emails = snapshot.val();
-//     $('#emails').append('<li class='collection-item'>' + emails.email + '<br>' + '</li>');
-//   });
-// });

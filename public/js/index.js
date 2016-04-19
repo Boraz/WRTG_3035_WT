@@ -36,10 +36,9 @@ $(function(){
     var email = $email.val();
     var food = food_data[$food.val()];
     var kind = food ? food.kinds[$foodType.val()] : undefined;
+    var extras = $foodExtras.val();
 
     if (name && email && food && kind) {
-      var extras = $foodExtras.val().slice(1);
-
       orders.push({
         "name": name,
         "email": email,
@@ -89,4 +88,5 @@ function loadOptions(food) {
 
 function reset() {
   loadFoods();
+  loadOptions();
 }

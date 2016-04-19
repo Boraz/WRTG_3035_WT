@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title> New Order -- WOO </title>
+
+  	<!--Import materialize.css-->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  	
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class='grey darken-4'>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+    <div class="navbar">
+      <nav>
+        <div class="nav-wrapper red accent-4" id="SPpark-nav">
+          <!-- the href refreshes the page, but its all dynamic so its only for the user -->
+          <a href="index.html" class="brand-logo center">Weathertech</a>
+            <ul class="right hide-on-small-and-down">
+              <li><a href="orders.html">See your order</a></li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class"container">
+
+    </div>
+
+    <div class="container">
+      <div class="card-panel grey lighten-5">
+        <div class="row">
+          <div class="col s12 center-align">
+            <h4> Weathertech Online Ordering </h4>
+            <!-- Good section for status of the WeatherTech. Like closed or no calzones w/e -->
+            <h1> 
+              WOO!
+            </h1>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <form class="col s12">
+
+            <div class="row">
+              <div class="input-field col s12 m6 offset-m3">
+                <input id="name" type="text" class="validate">
+                <label for="name">Name</label>
+              </div>
+            </div>
+            <div class="row">
+              
+              <div class="input-field col s12 m6 offset-m3">
+                <input id="email" type="email" class="validate">
+              <label for="email" data-error="Not_valid">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12 m8 offset-m2">
+                <select id="food" class="icons"></select>
+                <label>Food</label>
+              </div>
+              
+              <div class="input-field col s12 m8 offset-m2">
+                <select id="food-type"></select>
+                <label>What kind?</label>
+              </div>
+
+              <div class="input-field col s12 m8 offset-m2">
+                <select id="food-extras" multiple>
+                </select>
+                <label>Any Extras?</label>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      	
+        <div class="row">
+          <div class="input-field col s10">
+            <a id="submit" class="waves-effect waves-light btn right red accent-4" href="#">
+              <i class="material-icons right">shopping_cart</i>Submit
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src='js/index.js'></script>
+  	
+  </body>
+
+</html>

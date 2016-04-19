@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>View Orders -- WOO</title>
+
+  	<!--Import materialize.css-->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class='grey darken-4'>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+    <div class="navbar">
+      <nav>
+        <div class="nav-wrapper red accent-4" id="SPpark-nav">
+          <!-- the href refreshes the page, but its all daynamic so its only for the user -->
+          <a href="index.html" class="brand-logo center">Weathertech</a>
+            <ul class="right hide-on-small-and-down">
+              <li><a href="index.html">Place an order</a></li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+  	<div class="container">
+      <div class="card-panel">
+      	<div class="row">
+      	  <h3>Current Orders</h3>
+      	  <ul id="orders" class="collection"></ul>
+      	</div>
+      </div>
+    </div>
+
+    <script src='js/orders.js'></script>
+  	
+  </body>
+
+</html>

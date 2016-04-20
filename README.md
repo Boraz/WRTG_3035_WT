@@ -8,3 +8,9 @@ WRTG 3035 Technical writing Group project
 * Daniel Maxson
 
 Currently hosted at https://wt-online.firebaseapp.com
+
+Adding orders finished
+
+Removing orders finished
+
+TODO correct menu options in firebase.

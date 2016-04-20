@@ -24,7 +24,7 @@ function addOrder(order) {
   
   var $newItem = $(
     '<li class="collection-item row valign-wrapper">' + 
-      '<div class="col s11">' +
+      '<div class="col s10">' +
         '<h5>' + order_data.name + '</h5>' +
         '<span>' + 
           order_data.kind + ' ' + order_data.food +
@@ -35,7 +35,7 @@ function addOrder(order) {
   );
 
   var $remove = $(
-    '<a class="btn-flat waves-effect col s1 valign center-align"><i class="material-icons">done</i></a>'
+    '<a class="waves-effect waves-light btn valign center-align red accent-4 z-depth-2 col s1"><i class="material-icons">done</i></a>'
   );
   $remove.attr('key', order.key());
 

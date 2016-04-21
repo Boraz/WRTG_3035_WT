@@ -26,8 +26,6 @@
     <div class="navbar">
       <nav>
         <div class="nav-wrapper red accent-4" id="SPpark-nav">
-          <!-- the href refreshes the page, but its all dynamic so its only for the user -->
-          <a href="index.html" class="brand-logo center">Weathertech Online Ordering</a>
             <ul class="right hide-on-small-and-down">
               <li><a href="orders.html">See your order</a></li>
             </ul>
@@ -36,13 +34,11 @@
     </div>
 
     <div class="container z-depth-3">
-      <div class="card-panel grey lighten-5 col">
+      <div class="card-panel"> <!-- color change here. Need svg Weathertech logo so its not a white box -->
         <div class="row">
-          <div class="col s12 center-align">
+          <div class="col m12 center-align">
             <!-- Good section for status of the WeatherTech. Like closed or no calzones w/e -->
-            <h1> 
-              WOO!
-            </h1>
+            <img src="images/weathertech-1.gif" alt="WOO!">
 
           </div>
         </div>
@@ -51,14 +47,14 @@
           <form>
 
             <div class="row">
-              <div class="input-field col m6 offset-m3">
+              <div class="input-field col m4 offset-m4">
                 <input id="name" type="text" class="validate">
                 <label for="name">Name</label>
               </div>
             </div>
             <div class="row">
               
-              <div class="input-field col m6 offset-m3">
+              <div class="input-field col m4 offset-m4">
                 <input id="email" type="email" class="validate">
               <label for="email" data-error="Not_valid">Email</label>
               </div>
@@ -66,20 +62,20 @@
             <br>
 
             <div class="row">
-              <div class="input-field col m6 offset-m3">
+              <div class="input-field col m4 offset-m4">
                 <select id="food" class="icons"></select>
                 <label>Food</label>
               </div>
               
-              <div class="input-field col s12 m6 offset-m3">
+              <div class="input-field col m4 offset-m4">
                 <select id="food-type"></select>
                 <label>What kind?</label>
               </div>
 
-              <div class="input-field col s12 m6 offset-m3">
+              <div class="input-field col m4 offset-m4">
                 <select id="food-extras" multiple>
                 </select>
-                <label>Any Extras?</label>
+                <label>Options?</label>
               </div>
 
             </div>

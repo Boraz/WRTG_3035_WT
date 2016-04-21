@@ -24,18 +24,18 @@ function addOrder(order) {
   
   var $newItem = $(
     '<li class="collection-item row valign-wrapper">' + 
-      '<div class="col s11">' +
+      '<div class="col s10">' +
         '<h5>' + order_data.name + '</h5>' +
-        '<span>' + 
+        '<span>' +
           order_data.kind + ' ' + order_data.food +
-          (order_data.extras ? ' + ' + order_data.extras.join(', ') : '') +
+          (order_data.extras ? ' with ' + order_data.extras.join(', ') : '') + ' ' +
         '</span>' +
       '</div>' +
     '</li>'
   );
 
   var $remove = $(
-    '<a class="btn-flat waves-effect col s1 valign center-align"><i class="material-icons">done</i></a>'
+    '<a class="waves-effect waves-light btn valign center-align red accent-4 z-depth-1 col s2 m1"><i class="material-icons">done</i></a>'
   );
   $remove.attr('key', order.key());
 

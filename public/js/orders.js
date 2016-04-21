@@ -26,9 +26,8 @@ function addOrder(order) {
     '<li class="collection-item row valign-wrapper">' + 
       '<div class="col s10">' +
         '<h5>' + order_data.name + '</h5>' +
-        '<span>' + 
+        '<span>' + (order_data.extras ? ' ' + order_data.extras.join(', ') : '') + ' ' +
           order_data.kind + ' ' + order_data.food +
-          (order_data.extras ? ' + ' + order_data.extras.join(', ') : '') +
         '</span>' +
       '</div>' +
     '</li>'

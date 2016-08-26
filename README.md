@@ -13,4 +13,4 @@ Adding orders finished
 
 Removing orders finished
 
-TODO correct menu options in firebase.
+TODO chech if the menu has changed for 2016-2017 year

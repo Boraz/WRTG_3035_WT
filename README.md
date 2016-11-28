@@ -9,4 +9,4 @@ WRTG 3035 Technical writing Group project
 
 Currently hosted at https://wt-online.firebaseapp.com
 
-TODO chech if the menu has changed for 2016-2017 year
+TODO check if the menu has changed for 2016-2017 year
